@@ -1,2 +1,3 @@
 set -x
-../nginx/nginx.exe -c  nginx.conf
+cd ../nginx/
+./nginx.exe 
