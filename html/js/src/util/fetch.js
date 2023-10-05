@@ -1,4 +1,4 @@
-async function post(url, data) {
+export async function post(url, data) {
 
   let response;
 
@@ -52,7 +52,7 @@ function objectToQueryString(obj) {
   return keyValuePairs.join('&');
 }
 
-async function get(url, query) {
+export async function get(url, query) {
 
   let response;
 

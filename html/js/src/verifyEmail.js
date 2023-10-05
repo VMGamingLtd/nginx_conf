@@ -1,8 +1,9 @@
 /* global $ */
 import { lang } from './lang/lang.js';
 import { translateErrorOccured } from './lang/lang.js';
-import { API_URL } from './env.js';
 import { post as fetchPost } from './util/fetch.js';
+import { getEnvironment } from './env.js';
+
 
 function getVerificationCodeFromQuery() {
   const queryString = window.location.search;
@@ -13,16 +14,16 @@ function getVerificationCodeFromQuery() {
 }
 
 
-
 async function callVerify() {
   try {
+    let env = getEnvironment();
     let token = getVerificationCodeFromQuery();
     if (!token) {
       console.error('no token');
       throw new Error('no token');
     }
 
-    let url = `${API_URL}/verifyEmail`;
+    let url = `${env.gaosUrl}/user/verifyEmail`;
 
     let result = await fetchPost(url, {
       Code: token
@@ -57,7 +58,6 @@ async function callVerify() {
       }
 
     } else {
-      console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ cp 1300: callVerify(): email verified ok');
       let msg;
       if (lang.english()) {
         msg = "email verified";
@@ -89,7 +89,7 @@ async function callVerify() {
 async function setVerifyButton() {
   let button = $('#verify_button');
   let errorMessage = $('#error_message');
-  let infoMessage = $('info_message');
+  let infoMessage = $('#info_message');
 
   let txt;
   if (lang.english()) {
@@ -107,9 +107,11 @@ async function setVerifyButton() {
   button.text(txt)
 
   button.click(function () {
+    button.prop("disabled", true);
     errorMessage.text('');
     infoMessage.text('');
     callVerify().then(function (result) {
+      button.hide();
       if (!result.ok) {
         errorMessage.text(result.msg);
       } else {
@@ -130,7 +132,7 @@ function main() {
     return
   }
 
-  console.log(`@@@@@@@@@@@@@@@@@@@@@@@@ cp 300: ${token}`); 
+  setVerifyButton()
 }
 
 main();

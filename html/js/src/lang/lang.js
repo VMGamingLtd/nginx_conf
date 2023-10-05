@@ -6,7 +6,7 @@ export const lang = {
 }
 
 
-function translateErrorOccured() {
+export function translateErrorOccured() {
   let msg;
   if (lang.english()) {
     msg = "error occured"
