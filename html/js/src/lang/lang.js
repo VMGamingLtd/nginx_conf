@@ -1,24 +1,36 @@
-export const lang = {
-    english: () => true,
-    russian: () => false,
-    chinese: () => false,
-    slovak: () => false,
-}
+const LANG = "en";
 
+const translationsEn = null;
+const translationsSk = null;
+const translationsZh = null;  
+const translationsRu = null;
 
-export function translateErrorOccured() {
-  let msg;
-  if (lang.english()) {
-    msg = "error occured"
-  } else if (lang.russian()) {
-    msg = "произошла ошибка"
-  } else if (lang.chinese()) {
-    msg = "发生了错误"
-  } else if (lang.slovak()) {
-    msg = "nastala chyba"
+async function translate(key) {
+  if (LANG === "en") {
+    if (!translationsEn) {
+      translationsEn = await import("./en/translations.js");
+    } 
+    return translationsEn[key];
+  } else if (LANG === "sk") {
+    if (!translationsSk) {
+      translationsSk = await import("./sk/translations.js");
+    }
+    return translationsSk[key];
+  } else if (LANG === "zh") {
+    if (!translationsZh) {
+      translationsZh = await import("./zh/translations.js");
+    }
+    return translationsZh[key];
+  } else if (LANG === "ru") {
+    if (!translationsRu) {
+      translationsRu = await import("./ru/translations.js");
+    }
+    return translationsRu[key];
   } else {
-    msg = "error occured"
+    if (!translationsEn) {
+      translationsEn = await import("./en/translations.js");
+    }
+    return translationsEn[key];
   }
-
-  return msg;
 }
+

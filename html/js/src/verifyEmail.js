@@ -3,6 +3,7 @@ import { lang } from './lang/lang.js';
 import { translateErrorOccured } from './lang/lang.js';
 import { post as fetchPost } from './util/fetch.js';
 import { getEnvironment } from './env.js';
+import { translate } from './lang/lang.js';
 
 
 function getVerificationCodeFromQuery() {
@@ -35,21 +36,11 @@ async function callVerify() {
       console.dir(result);
       let msg;
       if (result.ErrorKind === "InvalidCodeError") {
-        if (lang.english()) {
-          msg = "invalid code";
-        } else if (lang.russian()) {
-          msg = "произошла ошибка";
-        } else if (lang.chinese()) {
-          msg = "无效的代码";
-        } else if (lang.slovak()) {
-          msg = "neplatný kód";
-        } else {
-          msg = "invalid code";
-        }
+        msg = await translate("invalid code");
       } else if (result.ErrorKind === "InternalError") {
-        msg = translateErrorOccured(); 
+        msg = await translate("error occured");
       } else {
-        msg = translateErrorOccured(); 
+        msg = await translate("error occured");
       }
 
       return {
@@ -58,18 +49,7 @@ async function callVerify() {
       }
 
     } else {
-      let msg;
-      if (lang.english()) {
-        msg = "email verified";
-      } else if (lang.russian()) {
-        msg = "адрес электронной почты подтвержден";
-      } else if (lang.chinese()) {
-        msg = "电子邮件已验证";
-      } else if (lang.slovak()) {
-        msg = "email overený";
-      } else {
-        msg = "email verified";
-      }
+      let msg = await translate("email verified");
 
       return {
         ok: true,
@@ -81,7 +61,7 @@ async function callVerify() {
     console.log("error", err)
     return {
       ok: false,
-      msg: translateErrorOccured(),
+      msg: await translate("error occured"),
     }
   }
 }
@@ -91,18 +71,7 @@ async function setVerifyButton() {
   let errorMessage = $('#error_message');
   let infoMessage = $('#info_message');
 
-  let txt;
-  if (lang.english()) {
-    txt = "click here to verify email"
-  } else if (lang.russian()) {
-    txt = "нажмите здесь, чтобы подтвердить электронную почту"
-  } else if (lang.chinese()) {
-    txt = "单击此处验证电子邮件"
-  } else if (lang.slovak()) {
-    txt = "kliknite sem pre overenie e-mailu"
-  } else {
-    txt = "click here to verify email"
-  }
+  let txt = await translate("click here to verify email");
 
   button.text(txt)
 
@@ -121,18 +90,18 @@ async function setVerifyButton() {
   });
 }
 
-function main() {
+async function main() {
   let token = getVerificationCodeFromQuery();
   if (!token) {
     console.warn('no "token" parameter passed in url query')
 
-    let msg = translateErrorOccured();
+    let msg = await translateErrorOccured();
     $('#error_message').text(msg);
 
     return
   }
 
-  setVerifyButton()
+  await setVerifyButton()
 }
 
 main();
