@@ -1,6 +1,4 @@
 /* global $ */
-import { lang } from './lang/lang.js';
-import { translateErrorOccured } from './lang/lang.js';
 import { post as fetchPost } from './util/fetch.js';
 import { getEnvironment } from './env.js';
 import { translate } from './lang/lang.js';
@@ -95,7 +93,7 @@ async function main() {
   if (!token) {
     console.warn('no "token" parameter passed in url query')
 
-    let msg = await translateErrorOccured();
+    let msg = await translate('error occured');
     $('#error_message').text(msg);
 
     return

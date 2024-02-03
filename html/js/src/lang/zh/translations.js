@@ -10,4 +10,7 @@ export const translations = {
     "password is empty": "密码为空",
     "passwords do not match": "密码不匹配",
     "password changed": "密码已更改",
-}
+};
+
+export default translations;
+

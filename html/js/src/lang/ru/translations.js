@@ -10,4 +10,6 @@ export const translations = {
     "password is empty": "пароль пуст",
     "passwords do not match": "пароли не совпадают",
     "password changed": "пароль изменен",
-}
+};
+
+export default translations;

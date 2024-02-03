@@ -11,4 +11,6 @@ export const translations = {
     "password is empty": "heslo je prázdne",
     "passwords do not match": "heslá sa nezhodujú",
     "password changed": "heslo zmenené",
-}
+};
+
+export default translations;

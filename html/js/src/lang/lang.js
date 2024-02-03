@@ -1,34 +1,39 @@
 const LANG = "en";
 
-const translationsEn = null;
-const translationsSk = null;
-const translationsZh = null;  
-const translationsRu = null;
+let translationsEn = null;
+let translationsSk = null;
+let translationsZh = null;  
+let translationsRu = null;
 
-async function translate(key) {
+export async function translate(key) {
   if (LANG === "en") {
     if (!translationsEn) {
-      translationsEn = await import("./en/translations.js");
+      let module = await import("./en/translations.js");
+      translationsEn = module.translations;
     } 
     return translationsEn[key];
   } else if (LANG === "sk") {
     if (!translationsSk) {
-      translationsSk = await import("./sk/translations.js");
+      let module  = await import("./sk/translations.js");
+      translationsSk = module.translations;
     }
     return translationsSk[key];
   } else if (LANG === "zh") {
     if (!translationsZh) {
-      translationsZh = await import("./zh/translations.js");
+      let module = await import("./zh/translations.js");
+      translationsZh = module.translations;
     }
     return translationsZh[key];
   } else if (LANG === "ru") {
     if (!translationsRu) {
-      translationsRu = await import("./ru/translations.js");
+      let module = await import("./ru/translations.js");
+      translationsRu = module.translations;
     }
     return translationsRu[key];
   } else {
     if (!translationsEn) {
-      translationsEn = await import("./en/translations.js");
+      let module = await import("./en/translations.js");
+      translationsEn = module.translations;
     }
     return translationsEn[key];
   }
