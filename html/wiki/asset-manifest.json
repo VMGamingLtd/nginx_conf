@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.eda9241b.css",
-    "main.js": "/static/js/main.8910232e.js",
-    "static/js/453.a28b9d03.chunk.js": "/static/js/453.a28b9d03.chunk.js",
-    "static/media/BestiaryBckg.png": "/static/media/BestiaryBckg.d9b971b5fe974ad73d9a.png",
-    "static/media/SubtleBckg.png": "/static/media/SubtleBckg.564cd54a498252220bc3.png",
-    "static/media/Audiowide-Regular.ttf": "/static/media/Audiowide-Regular.2017bdb174a62d0daa3e.ttf",
-    "index.html": "/index.html",
-    "main.eda9241b.css.map": "/static/css/main.eda9241b.css.map",
-    "main.8910232e.js.map": "/static/js/main.8910232e.js.map",
-    "453.a28b9d03.chunk.js.map": "/static/js/453.a28b9d03.chunk.js.map"
+    "main.css": "/wiki/static/css/main.171d2b7e.css",
+    "main.js": "/wiki/static/js/main.1b35f03c.js",
+    "static/js/453.a28b9d03.chunk.js": "/wiki/static/js/453.a28b9d03.chunk.js",
+    "static/media/BestiaryBckg.png": "/wiki/static/media/BestiaryBckg.d9b971b5fe974ad73d9a.png",
+    "static/media/SubtleBckg.png": "/wiki/static/media/SubtleBckg.564cd54a498252220bc3.png",
+    "static/media/Audiowide-Regular.ttf": "/wiki/static/media/Audiowide-Regular.2017bdb174a62d0daa3e.ttf",
+    "index.html": "/wiki/index.html",
+    "main.171d2b7e.css.map": "/wiki/static/css/main.171d2b7e.css.map",
+    "main.1b35f03c.js.map": "/wiki/static/js/main.1b35f03c.js.map",
+    "453.a28b9d03.chunk.js.map": "/wiki/static/js/453.a28b9d03.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eda9241b.css",
-    "static/js/main.8910232e.js"
+    "static/css/main.171d2b7e.css",
+    "static/js/main.1b35f03c.js"
   ]
 }
