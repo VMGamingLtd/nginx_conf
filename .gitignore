@@ -1,5 +1,5 @@
 *.swp
-html/
-html/**/*
-test/html/
-test/html/**/*
+#html/
+#html/**/*
+#test/html/
+#test/html/**/*
