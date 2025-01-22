@@ -1,3 +1,5 @@
 *.swp
-html/.vs/
-html/.idea/
+html/
+html/**/*
+test/html/
+test/html/**/*
